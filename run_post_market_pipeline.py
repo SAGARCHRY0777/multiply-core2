@@ -99,7 +99,9 @@ def run_update_profit_dict():
     logger.info("=" * 60)
     
     from functions.data_utils import fetch_config
-    from functions.update_profit_dict import update_profit_dict
+    # from functions.update_profit_dict import update_profit_dict
+    # from functions.update_profit_dict import update_profit_dict
+    from functions.fetch_historical_trades import fetch_historical_trades as update_profit_dict
     
     config = fetch_config()
     intervals = [
@@ -108,8 +110,12 @@ def run_update_profit_dict():
     ]
     
     logger.info(f"Intervals: {intervals}")
-    
-    success = update_profit_dict(config=config, intervals=intervals)
+    # success = update_profit_dict(config=config, intervals=intervals)
+    # HARDCODED TEST SYMBOLS
+    test_symbols = ['NIFTY', 'RELIANCE']
+    logger.info(f"Running TEST MODE for symbols: {test_symbols}")
+
+    success = update_profit_dict(config=config, intervals=intervals, symbols=test_symbols)
     
     if success:
         logger.info("Step 2 COMPLETE: Profit dict updated")
