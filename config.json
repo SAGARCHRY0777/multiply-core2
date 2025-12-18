@@ -1,0 +1,131 @@
+{
+  "commodities": false,
+  "equity": true,
+  "indices": false,
+  "commodities_list": [
+    "GOLD",
+    "SILVER",
+    "NATURALGAS",
+    "CRUDEOIL"
+  ],
+  "indices_list": [
+    "NIFTY",
+    "BANKNIFTY"
+  ],
+  "allowed_indices_intervals": [
+    "ONE_DAY",
+    "ONE_WEEK",
+    "ONE_MONTH"
+  ],
+  "allowed_commodities_intervals": [
+    "ONE_DAY",
+    "ONE_WEEK",
+    "ONE_MONTH"
+  ],
+  "allowed_equity_intervals": [
+    "FIFTEEN_MINUTE",
+    "ONE_HOUR",
+    "ONE_DAY",
+    "ONE_WEEK",
+    "ONE_MONTH"
+  ],
+  "indices_tokens_list": [
+    "99926000",
+    "99926009"
+  ],
+  "inference_update_intervals": {
+    "ONE_MINUTE": [
+      "THREE_MINUTE"
+    ],
+    "FIVE_MINUTE": [
+      "ONE_MINUTE"
+    ],
+    "FIFTEEN_MINUTE": [
+      "ONE_HOUR"
+    ],
+    "ONE_HOUR": [],
+    "ONE_DAY": [],
+    "ONE_WEEK": [],
+    "ONE_MONTH": []
+  },
+  "commodities_indices_profit_percentage": {
+    "ONE_MINUTE": 0.1,
+    "FIVE_MINUTE": 0.2,
+    "FIFTEEN_MINUTE": 0.2,
+    "ONE_HOUR": 0.4,
+    "ONE_DAY": 0.6,
+    "ONE_WEEK": 2,
+    "ONE_MONTH": 12
+  },
+  "equity_profit_percentage": {
+    "ONE_MINUTE": 0.4,
+    "FIVE_MINUTE": 0.8,
+    "FIFTEEN_MINUTE": 0.8,
+    "ONE_HOUR": 3,
+    "ONE_DAY": 6,
+    "ONE_WEEK": 12,
+    "ONE_MONTH": 30
+  },
+  "selected_mod": "auto",
+  "segment": "Options",
+  "withdraw_amount": 0.0,
+  "maximum_buy_percentage": "None",
+  "percentage_difference_thresholds": {
+    "equity": 0.5,
+    "indices": 0.03,
+    "commodities": 0.04
+  },
+  "profit_dict": {
+    "special_symbols": [
+      "NIFTY",
+      "BANKNIFTY",
+      "SENSEX",
+      "GOLD",
+      "SILVER",
+      "CRUDEOIL",
+      "NATURALGAS"
+    ],
+    "default_priority_intervals": [
+      "FIFTEEN_MINUTE"
+    ],
+    "default_secondary_intervals": [
+      "ONE_HOUR",
+      "ONE_DAY",
+      "ONE_WEEK",
+      "ONE_MONTH"
+    ],
+    "n_procs": 50,
+    "cooldown_threshold": 5000,
+    "cooldown_duration": 300
+  },
+  "boson": {
+    "model_backend": "xgboost",
+    "intervals": [
+      "ONE_MINUTE",
+      "FIVE_MINUTE",
+      "FIFTEEN_MINUTE",
+      "ONE_HOUR",
+      "ONE_DAY",
+      "ONE_WEEK",
+      "ONE_MONTH"
+    ],
+    "enabled_features": [
+      "candle_patterns",
+      "volume_indicators",
+      "fibonacci",
+      "pivot_points",
+      "trend_features",
+      "time_features"
+    ],
+    "training": {
+      "test_size": 0.2,
+      "early_stopping_rounds": 20,
+      "resampling": "adasyn",
+      "min_trades": 100
+    },
+    "storage": {
+      "backend": "azure",
+      "container": "boson"
+    }
+  }
+}

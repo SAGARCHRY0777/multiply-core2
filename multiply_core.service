@@ -1,0 +1,30 @@
+[Unit]
+Description=Multiply Core - Profit Dict Update Service
+After=network.target
+
+[Service]
+User=azureuser
+WorkingDirectory=/home/azureuser/multiply_core
+Type=simple
+ExecStart=/usr/bin/python3 /home/azureuser/multiply_core/run_post_market_pipeline.py --step 2
+Environment="PYTHONPATH=/home/azureuser/multiply_core"
+
+# Timeouts - allow long-running process
+TimeoutStartSec=infinity
+TimeoutStopSec=300
+
+# Restart settings
+Restart=on-failure
+RestartSec=10
+
+# Memory limits to prevent OOM
+MemoryMax=50G
+MemoryHigh=45G
+
+# Logging
+StandardOutput=append:/var/log/multiply_core.log
+StandardError=append:/var/log/multiply_core_error.log
+
+[Install]
+WantedBy=multi-user.target
+
