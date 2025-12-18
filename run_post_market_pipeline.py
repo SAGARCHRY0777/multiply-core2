@@ -115,7 +115,7 @@ def run_update_profit_dict():
     test_symbols = ['NIFTY', 'RELIANCE']
     logger.info(f"Running TEST MODE for symbols: {test_symbols}")
 
-    success = update_profit_dict(config=config, intervals=intervals, symbols=test_symbols)
+    success = update_profit_dict(intervals=intervals, symbols=test_symbols)
     
     if success:
         logger.info("Step 2 COMPLETE: Profit dict updated")
