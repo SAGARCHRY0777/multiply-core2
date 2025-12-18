@@ -4,6 +4,7 @@
 # Core Python packages
 python-dotenv>=1.0.0
 pytz>=2023.3
+psutil>=5.9.0
 
 # Data processing
 pandas>=2.0.0
@@ -28,9 +29,6 @@ smartapi-python>=1.3.4
 
 # TradingView data (if using websocket)
 tradingview-ta>=3.3.0
-
-# Concurrent futures (included in stdlib, but ensure compatibility)
-# concurrent-futures  # Only needed for Python 2.7
 
 # Scheduling
 schedule>=1.2.0

@@ -29,7 +29,16 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
+
 logger = logging.getLogger(__name__)
+
+import psutil
+
+def log_memory_usage(tag=""):
+    """Log current memory usage."""
+    process = psutil.Process(os.getpid())
+    mem = process.memory_info().rss / 1024 / 1024  # MB
+    logger.info(f"[MEMORY] {tag} - Usage: {mem:.2f} MB")
 
 IST = pytz.timezone('Asia/Kolkata')
 
@@ -115,7 +124,9 @@ def run_update_profit_dict():
     test_symbols = ['NIFTY', 'RELIANCE']
     logger.info(f"Running TEST MODE for symbols: {test_symbols}")
 
+    log_memory_usage("Before Profit Dict Update")
     success = update_profit_dict(intervals=intervals, symbols=test_symbols)
+    log_memory_usage("After Profit Dict Update")
     
     if success:
         logger.info("Step 2 COMPLETE: Profit dict updated")
